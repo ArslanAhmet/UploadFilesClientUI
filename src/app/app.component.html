@@ -1,0 +1,17 @@
+<article class="container">
+  <section class="create" *ngIf="isCreate">
+    <h1>Upload File</h1>
+    <form>
+
+      <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+    </form>
+  </section>
+  <section class="create" >
+    <h1>File Content</h1>
+    <div class="row">
+      
+        <app-latest-assets></app-latest-assets>
+      
+    </div>
+  </section>
+</article>

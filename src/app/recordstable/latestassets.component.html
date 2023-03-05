@@ -1,0 +1,69 @@
+<div class="d-flex justify-content-center flex-column">
+    <div class="spinner-container" *ngIf="sortedData.loading$ | async">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <mat-table
+      class="assets-table mat-elevation-z8"
+      [dataSource]="sortedData"
+      matSort
+      matSortActive="eventID"
+      matSortDirection="desc"
+      matSortDisableClear
+    >
+
+      <ng-container class="asset-cell" matColumnDef="eventID">
+        <mat-header-cell *matHeaderCellDef>Event ID</mat-header-cell>
+
+        <mat-cell *matCellDef="let asset" (mouseover)="highlightRow(asset,'EventID')">{{ asset.eventID }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="eventType" >
+        <mat-header-cell *matHeaderCellDef>Event Type</mat-header-cell>
+
+        <mat-cell *matCellDef="let asset" (mouseover)="highlightRow(asset,'EventType')">{{ asset.eventType }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="country">
+        <mat-header-cell *matHeaderCellDef>Country</mat-header-cell>
+
+        <mat-cell *matCellDef="let asset" (mouseover)="highlightRow(asset,'Country')">{{ asset.country }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="league">
+        <mat-header-cell *matHeaderCellDef>League</mat-header-cell>
+
+        <mat-cell *matCellDef="let asset" (mouseover)="highlightRow(asset,'League')">{{ asset.league }}</mat-cell>
+      </ng-container>
+
+
+      <ng-container class="asset-cell" matColumnDef="homeTeam">
+        <mat-header-cell *matHeaderCellDef>Home Team</mat-header-cell>
+
+        <mat-cell *matCellDef="let asset" (mouseover)="highlightRow(asset,'HomeTeam')">{{ asset.homeTeam }}</mat-cell>
+      </ng-container>
+
+
+      <ng-container class="asset-cell" matColumnDef="awayTeam">
+        <mat-header-cell *matHeaderCellDef>Away Team</mat-header-cell>
+
+        <mat-cell *matCellDef="let asset" (mouseover)="highlightRow(asset,'AwayTeam')">{{ asset.awayTeam }}</mat-cell>
+      </ng-container>
+
+
+      <ng-container class="asset-cell" matColumnDef="eventTime">
+        <mat-header-cell *matHeaderCellDef>Event Time</mat-header-cell>
+
+        <mat-cell *matCellDef="let asset" (mouseover)="highlightRow(asset,'EventTime')">{{ asset.eventTime }}</mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <mat-paginator
+      [length]="100"
+      [pageSize]="20"
+      [pageSizeOptions]="[5,10, 20, 50]"
+    ></mat-paginator>
+  </div>

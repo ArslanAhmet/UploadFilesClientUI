@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-center flex-column">
+    <div class="spinner-container" *ngIf="recordChangesData.loading$ | async">
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <mat-table class="assets-table mat-elevation-z8" [dataSource]="recordChangesData" matSort matSortActive="eventID"
+        matSortDirection="desc" matSortDisableClear>
+
+        <ng-container class="asset-cell" matColumnDef="eventID">
+            <mat-header-cell *matHeaderCellDef>Event ID</mat-header-cell>
+
+            <mat-cell *matCellDef="let asset" (mouseover)="highlightRow(asset,'name')">{{ asset.eventID }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>name</mat-header-cell>
+
+            <mat-cell *matCellDef="let asset" (mouseover)="highlightRow(asset,'name')">{{ asset.name }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="value">
+            <mat-header-cell *matHeaderCellDef>value</mat-header-cell>
+
+            <mat-cell *matCellDef="let asset" (mouseover)="highlightRow(asset,'value')">{{ asset.value }}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+</div>
