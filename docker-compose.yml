@@ -1,7 +1,6 @@
 # docker-compose
 version: '3.8'
 services:
-services:
   app:
     build: .
     command: sh -c "npm start"
